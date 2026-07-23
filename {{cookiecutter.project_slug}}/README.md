@@ -1,47 +1,92 @@
-# AI Agent Application
+# {{ cookiecutter.project_name }}
 
-A modular, production-grade LangGraph agent application.
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
+![Poetry](https://img.shields.io/badge/Poetry-1.8%2B-orange)
+![LangChain](https://img.shields.io/badge/LangChain-LangGraph-green)
 
-## Project Architecture
+A modular, production-ready AI agent starter built with LangChain and LangGraph.
+
+## Features
+
+- A structured agent workflow powered by LangGraph
+- Typed state management for agent execution
+- Extensible tool integration for custom capabilities
+- Environment-based configuration with Pydantic settings
+- Poetry-based dependency and environment management
+
+## Project Structure
 
 ```text
-├── config/                 # Application configuration & Pydantic settings
-│   └── settings.py         # Loads environment variables from .env
-├── src/                    # Primary source code
-│   ├── agent/              # LangGraph core logic
-│   │   ├── state.py        # TypedDict state definitions
-│   │   ├── nodes.py        # LLM & task node functions
-│   │   ├── edges.py        # Conditional routing functions
-│   │   └── graph.py        # Graph assembly & compilation
-│   ├── services/           # External API & REST integration wrappers
-│   │   └── {search}_service.py
-│   └── tools/              # Agent tool interfaces exposed to LLMs
-│       ├── base.py         # Exporter combining all active tools
-│       └── custom_tool.py  # Custom tool implementation
-├── tests/                  # Unit and integration test suites
-│   └── test_custom_tools.py
-├── .env.example            # Template for environment variables
-├── .gitignore              # Files excluded from source control
-├── pyproject.toml          # Poetry dependency & project management | Generated via `poetry init`
-└── main.py                 # Application entry point
-
+├── config/
+│   └── settings.py         # Environment configuration and secrets
+├── src/
+│   ├── agent/              # LangGraph orchestration and workflow nodes
+│   │   ├── state.py        # Shared state definitions
+│   │   ├── nodes.py        # Node implementations
+│   │   ├── edges.py        # Routing and conditional transitions
+│   │   └── graph.py        # Graph construction and compilation
+│   ├── services/           # External service integrations
+│   └── tools/              # Agent tool definitions and helpers
+│       ├── base.py
+│       └── custom_tool.py
+├── tests/                  # Unit and integration tests
+├── main.py                 # Application entry point
+├── pyproject.toml          # Poetry project configuration
+└── README.md               # Project overview and usage
 ```
 
-## Additional Notes
+## Prerequisites
 
- - Rename .env.example to .env and add environmnet varibales, API keys etc and update settings.py file for the key names 
+- Python 3.11+
+- Poetry
+- An API provider or local model endpoint configured in your environment
 
- - To create environment and install dependencies from poetry.lock file
-   > poetry install 
+## Setup
 
- - To add a dependency 
-   > poetry add pydantic 
-     
- - To activate environment 
-   > source $(poetry env info --path)/bin/activate
+1. Install dependencies:
 
-- To Run the application  
-   > poetry run python main.py 
+   ```bash
+   poetry install
+   ```
 
-- To Run Tests
-   > poetry run pytest   
+2. Create a local environment file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Update your environment variables and model settings in the configuration module.
+
+4. Start the application:
+
+   ```bash
+   poetry run python main.py
+   ```
+
+## Development Commands
+
+- Run tests:
+
+  ```bash
+  poetry run pytest
+  ```
+
+- Add a dependency:
+
+  ```bash
+  poetry add <package-name>
+  ```
+
+- Activate the Poetry environment:
+
+  ```bash
+  poetry shell
+  ```
+
+## Configuration
+
+The project uses environment variables through Pydantic settings. Update the values in your `.env` file and the related settings class to match your provider and model choices.
+
+## Notes
+
+This starter is intended as a foundation for building more advanced LangChain and LangGraph applications, including tool calling, multi-step reasoning, and external service integrations.
