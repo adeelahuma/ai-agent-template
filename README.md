@@ -72,7 +72,6 @@ When you generate a project from this template, you can customize:
 
    ```bash
    poetry install
-   poetry shell
    ```
 
 5. Run the application:
