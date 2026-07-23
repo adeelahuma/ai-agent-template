@@ -1,0 +1,6 @@
+{
+  "project_name": "My AI Agent",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "author_name": "Adeela Huma",
+  "python_version": "3.11"
+}
