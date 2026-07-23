@@ -59,7 +59,7 @@ When you generate a project from this template, you can customize:
 2. Generate a new project from this template:
 
    ```bash
-   cookiecutter https://github.com/your-username/ai-agent-template.git
+   cookiecutter https://github.com/adeelahuma/ai-agent-template.git
    ```
 
 3. Navigate into the generated project directory:
